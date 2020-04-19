@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portal:root xmlns:html="http://www.w3.org/1999/xhtml-netuix-modified/1.0.0"
+    xmlns:netuix="http://www.bea.com/servers/netuix/xsd/controls/netuix/1.0.0"
+    xmlns:portal="http://www.bea.com/servers/netuix/xsd/portal/support/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/servers/netuix/xsd/portal/support/1.0.0 portal-support-1_0_0.xsd">
+    <netuix:desktop definitionLabel="ahbx_portal" discEnabled="false" dvtEnabled="false"
+        encoding="UTF-8" markupName="desktop" markupType="Desktop" scrollToWindow="true"
+        title="AHBX Portal" treeOptimizationEnabled="true">
+        <netuix:lookAndFeel definitionLabel="bighornLookAndFeel"
+            description="A look and feel using the bighorn skin and skeleton"
+            markupName="bighornLookAndFeel" markupType="LookAndFeel" skeleton="bighorn"
+            skin="bighorn" title="Bighorn">
+            <netuix:titlebarButtonOrder>
+                <netuix:otherButtons/>
+                <netuix:namedButton name="float"/>
+                <netuix:namedButton name="edit"/>
+                <netuix:namedButton name="help"/>
+                <netuix:namedButton name="minimized"/>
+                <netuix:namedButton name="maximized"/>
+                <netuix:namedButton name="delete"/>
+            </netuix:titlebarButtonOrder>
+        </netuix:lookAndFeel>
+        <netuix:shell description="A shell consisting of only a book (no header/footer)."
+            markupName="bookOnly" markupType="Shell" title="Book-Only Shell">
+            <netuix:head/>
+            <netuix:body>
+                <netuix:book defaultPage="" definitionLabel="ahbx_portal_book_1" markupName="book"
+                    markupType="Book" title="Main Page Book">
+                    <netuix:content>
+                        <netuix:page definitionLabel="accessCode" hidden="true" markupName="page"
+                            markupType="Page" title="Enter Access Code">
+                            <netuix:content>
+                                <netuix:flowLayout
+                                    description="This layout uses the flowLayout control to create three columns in which placeables flow vertically."
+                                    htmlLayoutUri="/framework/markup/layout/threerowflow.html.txt"
+                                    markupName="threeRowFlowLayout" markupType="Layout"
+                                    orientation="vertical" title="Three Row Flow Layout">
+                                    <netuix:placeholder
+                                        description="The middle placeholder in this layout."
+                                        markupName="threeRowFlow_center" markupType="Placeholder"
+                                        title="center" usingFlow="false" width="100%">
+                                        <netuix:portletInstance
+                                            contentUri="/portlets/enterAccessCode.portlet"
+                                            instanceLabel="accessCode" markupType="Portlet" title="EnterAccessCode"/>
+                                    </netuix:placeholder>
+                                    
+                                </netuix:flowLayout>
+                            </netuix:content>
+                        </netuix:page>
+                    </netuix:content>
+                </netuix:book>
+            </netuix:body>
+        </netuix:shell>
+    </netuix:desktop>
+</portal:root>

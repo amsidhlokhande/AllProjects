@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.amsidh.mvc</groupId>
+		<artifactId>EmployeePortal</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>employee-portal-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>employee-portal-ear Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		 <dependency>
+			<groupId>com.amsidh.mvc</groupId>
+			<artifactId>employee-portal-web</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>employee-portal-ear</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+                <version>2.5</version>
+				<configuration>
+                    <defaultLibBundleDir>APP-INF/lib</defaultLibBundleDir>
+					<earSourceDirectory>${basedir}/EarContent</earSourceDirectory>
+					 <modules>
+                         <webModule>
+                             <groupId>com.amsidh.mvc</groupId>
+                             <artifactId>employee-portal-web</artifactId>
+                             <contextRoot>/employee</contextRoot>
+                         </webModule>
+                     </modules>
+				</configuration>
+			</plugin>
+				<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.8</version>
+				<configuration>
+					<projectNameTemplate>${artifactID}</projectNameTemplate>
+					<additionalBuildcommands>
+						<buildcommand>
+							org.eclipse.wst.common.project.facet.core.builder
+						</buildcommand>
+						<buildcommand>
+							org.eclipse.wst.validation.validationbuilder
+						</buildcommand>
+						<buildcommand>
+							oracle.eclipse.tools.weblogic.sharedLibraryFrameworkValidator
+						</buildcommand>
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>
+							org.eclipse.wst.common.project.facet.core.nature
+						</projectnature>
+						<projectnature>
+							org.eclipse.wst.common.modulecore.ModuleCoreNature
+						</projectnature>
+					</additionalProjectnatures>
+					<additionalConfig>
+						<file>
+							<name>
+								.settings/org.eclipse.wst.common.project.facet.core.xml
+							</name>
+							<content>
+								<![CDATA[
+								<?xml version="1.0" encoding="UTF-8"?>
+								<faceted-project>
+								  <runtime name="Oracle WebLogic Server 11gR1 PatchSet 1" />
+								  <fixed facet="jst.ear" />
+								  <installed facet="jst.ear" version="5.0" />
+								  <installed facet="wls.ear" version="10.3.2" />
+								  <installed facet="wlp.full-framework-app" version="10.3.2" />
+								  <installed facet="wlp.wps-app" version="10.3.2" />
+								  <installed facet="wlp.admin-framework-app" version="10.3.2" />
+								  <installed facet="wlp.admin-portal-app" version="10.3.2" />
+								  <installed facet="wlp.propagation-app" version="10.3.2" />
+								</faceted-project>
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>
+								.settings/org.eclipse.wst.common.component
+							</name>
+							<content>
+								<![CDATA[
+								<?xml version="1.0" encoding="UTF-8"?>
+								<project-modules id="moduleCoreId" project-version="1.5.0">
+									<wb-module deploy-name="employee-portal-ear">
+										<wb-resource deploy-path="/" source-path="/EarContent" />
+										<dependent-module deploy-path="/" handle="module:/resource/employee-portal-web/employee-portal-web">
+											<dependent-object />
+											<dependency-type>uses</dependency-type>
+										</dependent-module>
+									</wb-module>
+								</project-modules>
+								]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		
+			
+		</plugins>	
+	</build>
+
+	<profiles>
+        <profile>
+			<id>rename</id>
+            <properties>
+                <preassembly.dir>${project.build.directory}/preassembly</preassembly.dir>
+                <contextName>employeeportal</contextName>
+            </properties>
+		    <build>
+             	<finalName>${contextName}-ear</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <copy todir="${preassembly.dir}">
+                                            <fileset dir="src/main/application" />
+                                        </copy>
+                                        <replace summary="true" file="${preassembly.dir}/META-INF/weblogic-application.xml" token="employee" value="${contextName}" />
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <earSourceDirectory>${preassembly.dir}</earSourceDirectory>
+                            <modules>
+                                <webModule>
+                                    <groupId>com.amsidh.mvc</groupId>
+                                    <artifactId>employee-portal-web</artifactId>
+                                    <contextRoot>/employee</contextRoot>
+                                </webModule>
+                            </modules>
+                        </configuration>
+                        <groupId>org.apache.maven.plugins</groupId>
+                    </plugin>
+                </plugins>
+		    </build>
+		</profile>
+    </profiles>
+	
+	</project>

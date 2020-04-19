@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   <class name="com.amsidh.dom.PatientDom" table="PATIENT" > 
+      <id name="patId" column="PATID" type="java.lang.Integer">
+         <generator class="identity"/>
+      </id>
+      <property name="patName" column="PATNAME" type="string" length="100" not-null="false"/>
+      <property name="patAddress" column="PATADDRESS" type="string" length="200" not-null="true"/>
+      <property name="patMobileNumber" column="PATMOBILENUMBER" type="java.lang.Integer" length="10" not-null="true"/>
+      <property name="doctorName" column="DOCTNAME" length="100" not-null="false"/>
+      <property name="problemDescription" column="PROBLEMDESCRIPTION" length="200" not-null="true"/>
+      <property name="dateOfAdmit" column="DATEOFADMIT" not-null="false"/>
+      <property name="dateOfDischarge" column="DATEOFDISCHARGE"  not-null="false"/>
+   </class>
+</hibernate-mapping>

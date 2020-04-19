@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.amsidh.mvc</groupId>
+		<artifactId>Book_Portal</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>book-portal-web</artifactId>
+	<packaging>war</packaging>
+	<name>book-portal-web module</name>
+
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.amsidh.book</groupId>
+			<artifactId>book-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Spring core & mvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc-portlet</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>displaytag</groupId>
+			<artifactId>displaytag-portlet</artifactId>
+
+		</dependency>
+
+
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+
+		</dependency>
+
+		<!-- java bytecode processor -->
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<type>maven-plugin</type>
+		</dependency>
+
+	</dependencies>
+
+
+
+	<build>
+		<directory>../target/book-portal-web</directory>
+		<outputDirectory>${project.build.directory}/classes</outputDirectory>
+		<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+		<defaultGoal>install</defaultGoal>
+		<finalName>${project.artifactId}</finalName>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<argLine>
+						-Dsun.lang.ClassLoader.allowArraySyntax=true
+					</argLine>
+					<skipTests>true</skipTests>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<useCache>true</useCache>
+
+				</configuration>
+				<executions>
+					<execution>
+						<id>prepare-war</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>exploded</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<buildOutputDirectory>build/classes</buildOutputDirectory>
+					<wtpapplicationxml>true</wtpapplicationxml>
+					<wtpversion>2.0</wtpversion>
+					<downloadSources>false</downloadSources>
+					<packaging>war</packaging>
+					<wtpmanifest>true</wtpmanifest>
+					<projectNameTemplate>${project.artifactId}</projectNameTemplate>
+					<additionalBuildcommands>
+						<buildcommand>com.bea.wlp.eclipse.controls.AssemblyPublishCleaner</buildcommand>
+						<buildcommand>org.eclipse.wst.jsdt.core.javascriptValidator</buildcommand>
+						<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+						<buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
+						<buildcommand>org.eclipse.wst.validation.validationbuilder</buildcommand>
+						<buildcommand>oracle.eclipse.tools.weblogic.sharedLibraryFrameworkValidator</buildcommand>
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+						<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+					</additionalProjectnatures>
+					<classpathContainers>
+						<!--<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Oracle 
+							WebLogic Server 11gR1 PatchSet 1 JRE</classpathContainer> -->
+						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.system</classpathContainer>
+						<classpathContainer>org.eclipse.jst.j2ee.internal.web.container</classpathContainer>
+						<classpathContainer>org.eclipse.jst.j2ee.internal.module.container</classpathContainer>
+						<classpathContainer>com.bea.workshop.xmlbeans.lib/version_2_3</classpathContainer>
+						<classpathContainer>com.bea.wlp.eclipse.common.system</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/content-management-faces-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-dvt-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-visitor-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-framework-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-commonui-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-framework-full-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/jaxrs-framework-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/jersey-web-lib/allow-newer/1.0/1.0.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-full-console-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-analytics-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-serviceadmin-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-ugm-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-portal-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-im-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-content-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-common-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-framework-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-tools-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/content-management-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-services-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/content-management-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-services-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/vcr-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wls-commonslogging-bridge-war/exact/1.0</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-jsf-portlet-bridge-2.0-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-clipper-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-lookandfeel-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-rest-full-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-framework-rest-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-rest-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-light-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-wsrp-producer-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-framework-common-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/jstl/allow-newer/1.2/1.2.0.1</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/p13n-rest-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/p13n-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/p13n-core-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-framework-full-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/p13n-app-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/p13n-app-lib-base/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.application/book-portal-ear</classpathContainer>
+
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/beehive-controls-1.0.1-10.0-war/allow-newer/1.0/1.0.2.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/wlp-beehive-web-lib/allow-newer/10.3.2/10.3.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/beehive-netui-1.0.1-10.0/allow-newer/1.0/1.0.2.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/beehive-netui-resources-1.0.1-10.0/allow-newer/1.0/1.0.2.2</classpathContainer>
+						<classpathContainer>oracle.eclipse.tools.weblogic.lib.shared/jsf/exact/1.2</classpathContainer>
+					</classpathContainers>
+					<additionalConfig>
+						<file>
+							<name>
+								.settings/org.eclipse.wst.common.project.facet.core.xml
+							</name>
+							<content>
+								<![CDATA[								
+								<?xml version="1.0" encoding="UTF-8"?>
+								<faceted-project>
+								  <runtime name="Oracle WebLogic Server 11gR1 PatchSet 1" />
+								  <fixed facet="jst.java" />
+								  <fixed facet="jst.web" />
+								  <installed facet="jst.java" version="6.0" />
+								  <installed facet="jst.web" version="2.5" />
+								  <installed facet="wls.web" version="10.3.2" />
+								  <installed facet="workshop.xmlbeans" version="2.3" />
+								  <installed facet="java.apt" version="5.0" />
+								  <installed facet="jst.jsf" version="1.2" />
+								  <installed facet="wlp.jaxrs-framework-web" version="10.3.2" />
+								  <installed facet="wlp.wps-web" version="10.3.2" />
+								  <installed facet="wls.logging" version="1.0" />
+								  <installed facet="wlp.framework-web" version="10.3.2" />
+								  <installed facet="wlp.wps-jsf-web" version="10.3.2" />
+								  <installed facet="wlp.wsrp-producer-web" version="10.3.2" />
+								  <installed facet="wlp.framework-jsf-web" version="10.3.2_1.2" />
+								  <installed facet="wlp.full-framework-web" version="10.3.2" />
+								  <installed facet="wlp.dvt-web" version="10.3.2" />
+								</faceted-project>
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>
+								.settings/org.eclipse.wst.common.component
+							</name>
+							<content>
+								<![CDATA[
+								<?xml version="1.0" encoding="UTF-8"?>
+								<project-modules id="moduleCoreId" project-version="1.5.0">
+									<wb-module deploy-name="${project.artifactId}">
+										<wb-resource deploy-path="/" source-path="/src/main/webapp" />
+										<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java" />
+										<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources" />
+										<wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_src" />
+										<property name="context-root" value="book" />
+										<property name="java-output-path" value="/test/build/classes" />
+									</wb-module>
+								</project-modules>
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>
+								.settings/org.eclipse.jdt.apt.core.prefs
+							</name>
+							<content>
+								<![CDATA[
+									eclipse.preferences.version=1
+									org.eclipse.jdt.apt.aptEnabled=true
+									org.eclipse.jdt.apt.genSrcDir=.apt_src
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>
+								.settings/org.eclipse.jdt.core.prefs
+							</name>
+							<content>
+								<![CDATA[
+								eclipse.preferences.version=1
+								org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
+								org.eclipse.jdt.core.compiler.compliance=1.6
+								org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
+								org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
+								org.eclipse.jdt.core.compiler.processAnnotations=enabled
+								org.eclipse.jdt.core.compiler.source=1.6
+								]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+
+
+		</plugins>
+
+
+	</build>
+</project>

@@ -1,0 +1,46 @@
+@CHARSET "ISO-8859-1";
+p {
+	font-size: 14px;
+}
+
+h1 {
+	font-family: monospace; color : gray;
+	text-align: center;
+	text-decoration: underline;
+	text-shadow: red;
+	text-transform: uppercase;
+	margin-top: 100px;
+	color: gray;
+}
+
+em {
+	background-color: purple;
+	text-decoration: none;
+	color: white;
+}
+
+.myclass {
+	font-family: monospace;
+	font-size:30px;
+	color: red;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: red;
+	text-transform: uppercase;
+	margin-top: 15px;
+}
+
+div h2 h3{
+   color: blue;
+   text-decoration: underline;
+}
+
+em:hover{
+  color: pink;
+  background-color: yellow; 
+}
+
+h1.working{
+   font-size: 30px;
+   color: teal;
+}

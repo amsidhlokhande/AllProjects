@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="pk1.Games" table="GAMES" discriminator-value="NORMAL">
+    <id name="gameName" column="NAME" type="string">
+      <generator class="assigned"></generator>
+    </id>
+    <discriminator column="TYPE" type="string"></discriminator>
+    <property name="numberOfPlayers" column="NOOFPLAYERS" type="string"></property>
+    <property name="numberOfLevels" column="NUMBEROFLEVELS" type="string"></property>
+    <subclass name="pk2.Cick" extends="pk1.Games" discriminator-value="CRICKET"></subclass>
+    <subclass name="pk2.Hollyball" extends="pk1.Games" discriminator-value="HollyBall"></subclass>
+  </class>  
+</hibernate-mapping>
+
+

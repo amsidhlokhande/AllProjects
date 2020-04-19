@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<bean id="triangle" class="com.amsidh.collections.Triangle">
+		<property name="width" value="10" />
+		<property name="height" value="30" />
+	</bean>
+	<bean id="allCollection" class="com.amsidh.collections.AllCollection">
+
+		<property name="listOfShape">
+			<list>
+				<value>Triangle</value>
+				<value>Rectangle</value>
+				<value>Square</value>
+				<value>Circle</value>
+				<ref bean="triangle" />
+				<bean class="com.amsidh.collections.Triangle">
+					<property name="width" value="0" />
+					<property name="height" value="50" />
+				</bean>
+
+			</list>
+		</property>
+
+		<property name="setOfShape">
+			<set>
+				<value>Triangle</value>
+				<value>Rectangle</value>
+				<value>Square</value>
+				<value>Circle</value>
+				<ref bean="triangle" />
+				<bean class="com.amsidh.collections.Triangle">
+					<property name="width" value="0" />
+					<property name="height" value="50" />
+				</bean>
+				
+			</set>
+		</property>
+
+		<property name="mapOfShape">
+			<map>
+				<entry key="triangle" value="Triangle" />
+				<entry key="rectangle" value="Rectangle" />
+				<entry key="square" value="Square" />
+				<entry key="circle" value="Circle" />
+				<entry key="triangle2" value-ref="triangle"></entry>
+				<entry key="triangle3">
+				  <bean class="com.amsidh.collections.Triangle">
+					<property name="width" value="0" />
+					<property name="height" value="50" />
+				</bean>
+				
+				</entry>
+			</map>
+		</property>
+
+
+		<property name="propOfShape">
+			<props>
+				<prop key="triangle">Triangle</prop>
+				<prop key="rectangle">Rectangle</prop>
+				<prop key="square">Square</prop>
+				<prop key="circle">Circle</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

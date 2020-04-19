@@ -1,0 +1,16 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+   <package name="default" extends="hibernate-default" >
+     
+     <action name="saveEmp" class="emp.action.EmpInfoAction" method="addEmpInfo">
+        <result name="SUCCESS" type="redirect">listEmp</result>
+     </action>  
+     <action name="listEmp" class="emp.action.EmpInfoAction" method="listEmpInfo">
+     <result name="SUCCESS">/empInfo.jsp</result>
+     </action>
+   </package>
+</struts>

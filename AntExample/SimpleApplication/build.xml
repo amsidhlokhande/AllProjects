@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+ <project name="SimpleApplication" basedir="." default="run">
+    <property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir" value="${build.dir}/jar"/>
+	<property name="main-class" value="HelloWorld"/>
+	
+	<target name="init">
+	 <mkdir dir="${classes.dir}"/>
+	 <mkdir dir="${jar.dir}"/>
+	</target>
+	
+	<target name="clean">
+	   <delete>
+	     <fileset dir="${build.dir}" />
+	   </delete>
+	</target>
+	
+	<target name="compile" depends="clean,init" >
+	   <javac srcdir="${src.dir}" destdir="${classes.dir}" verbose="true"/>
+	</target>
+	
+	<target name="jar">
+	   <jar destfile="${jar.dir}/SimpleApplication.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="HelloWorld" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="run" depends="compile,jar">
+	    <!--
+	    <java jar="${jar.dir}/SimpleApplication.jar" fork="true" >
+         <arg value="${arg0}"/>
+		</java>		
+		-->
+		<java classname="HelloWorld">
+		   <classpath path="."/>
+		  <arg value="${arg0}"/>
+		</java>
+	</target>
+ </project>
